@@ -58,11 +58,11 @@
   ;(rotate-x @a)
   ;(rotate-y @b)
   
-  ;(translate (/ (width) 2) (/ (height) 2))
+  (translate (/ (width) 2) (/ (height) 2))
   
   (let [[x y] @mouse-position]
-    (rotate-x (map-to y 0 (width) 0 rotmax))
-    (rotate-y (map-to x 0 (height) 0 rotmax)))
+    (rotate-x (map-range y 0 (width) 0 rotmax))
+    (rotate-y (map-range x 0 (height) 0 rotmax)))
   (rotate-z @a)
   (makebox)
   
@@ -72,7 +72,7 @@
 
 (defapplet opengl-example
   :title "OpenGL Example"
-  :size [800 600 OPENGL]
+  :size [800 600 :opengl]
   :setup setup
   :draw draw
   :mouse-moved mouse-moved)
